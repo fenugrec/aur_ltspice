@@ -32,7 +32,7 @@ build() {
     cd "${srcdir}"
 
     wrestool -x -t 14 LTspice.exe >${pkgname}.ico
-    convert ${pkgname}.ico ${pkgname}.png
+    magick ${pkgname}.ico ${pkgname}.png
     rm ${pkgname}.ico
 
     gendesk --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" -n --name="LTSpice" --exec="/usr/bin/ltspice" -f
