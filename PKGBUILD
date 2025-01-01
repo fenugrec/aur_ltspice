@@ -2,7 +2,7 @@
 # Contributor: Max Stabel <max dot stabel03 at gmail dot com>
 
 pkgname=ltspice
-pkgver=17.1.14.20230928.13
+pkgver=24.0.11.20240418.3
 pkgrel=1
 pkgdesc="SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("${pkgname}.sh"
         "https://ltspice.analog.com/software/LTspice64.msi")
 sha256sums=('69080c30dee9c0141bbe04684c31f1896565778cbe3705cd4eb0996ed31d6c2e'
             '25fdb185aea9752b1739d5787f9c180ddd5be728f25ebb6877075be272e79195'
-            '6718abbd4f4faefe375c579de775151525a9a1cca821041796588a6ec05a5c99')
+            '62a9f20b630738e6ade20a37551baa91b20760bfb718807d8a2be4caa3421a36')
 
 OPTIONS=(!strip)
 
@@ -68,7 +68,7 @@ pkgver() {
     cd "${srcdir}"
 
     # program
-    ver=$(grep LTspice64.msi LTspice.json -A1 | tail -n1 | grep -oP '17\.\d+\.\d+')
+    ver=$(grep LTspice64.msi LTspice.json -A1 | grep -i version | grep -oP '\d+\.\d+\.\d+')
 
     # data
     date=$(head -n1 ChangeLog.txt | awk '{print $1}')
