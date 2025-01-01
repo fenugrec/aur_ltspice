@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility."
 arch=('x86_64')
 url="http://www.linear.com/designtools/software/"
-license=('custom')
+license=('LicenseRef-LTspice')
 depends=('wine')
 makedepends=('curl' 'icoutils' 'imagemagick' 'gendesk' 'msitools')
 
