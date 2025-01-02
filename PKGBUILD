@@ -15,8 +15,8 @@ makedepends=('curl' 'icoutils' 'imagemagick' 'gendesk' 'msitools')
 source=("${pkgname}.sh"
         "${pkgname}-help.sh"
         "https://ltspice.analog.com/software/LTspice64.msi")
-sha256sums=('69080c30dee9c0141bbe04684c31f1896565778cbe3705cd4eb0996ed31d6c2e'
-            '25fdb185aea9752b1739d5787f9c180ddd5be728f25ebb6877075be272e79195'
+sha256sums=('eb49fb2914f752bb3e80a7a754faff0d0eec1e4f4b9156f289aae6d5f2701faa'
+            '3a0fed134c263a7a0573f36c1f4e49d27bea2cca0c098e069e79e1411d3c302e'
             '62a9f20b630738e6ade20a37551baa91b20760bfb718807d8a2be4caa3421a36')
 
 OPTIONS=(!strip)
@@ -60,6 +60,9 @@ package()
     install -m644 *.zip "${pkgdir}/opt/${pkgname}"
     install -m644 LTspice.json "${pkgdir}/opt/${pkgname}"
     install -m644 ChangeLog.txt "${pkgdir}/opt/${pkgname}"
+
+    # symlink help files
+    ln -sv "/usr/share/doc/${pkgname}" "${pkgdir}/opt/${pkgname}/LTspiceHelp"
 
     # Install /usr/bin startscript
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
