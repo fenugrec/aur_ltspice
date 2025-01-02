@@ -9,6 +9,7 @@ arch=('x86_64')
 url="http://www.linear.com/designtools/software/"
 license=('LicenseRef-LTspice')
 depends=('wine')
+optdepends=('xdg-utils: for launching HTML help files')
 makedepends=('curl' 'icoutils' 'imagemagick' 'gendesk' 'msitools')
 
 source=("${pkgname}.sh"
@@ -50,7 +51,8 @@ package()
     install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     # Install docs to /usr/share/doc/
-    install -Dm644 LTspiceHelp.chm "${pkgdir}/usr/share/doc/${pkgname}/ltspice.chm"
+    install -m755 -d "${pkgdir}/usr/share/doc/${pkgname}"
+    cp -r LTspiceHelp/* "${pkgdir}/usr/share/doc/${pkgname}"
 
     # Install binary files to /opt
     install -m755 -d "${pkgdir}/opt/${pkgname}"
