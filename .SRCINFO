@@ -15,7 +15,7 @@ pkgbase = ltspice
 	source = ltspice.sh
 	source = ltspice-help.sh
 	source = https://ltspice.analog.com/software/LTspice64.msi
-	sha256sums = 14c89f7cfa86652ce0337bbd857e3502bd85a82879a0797edb5b5d345808281c
+	sha256sums = 456c0e6550f8d7ee354aca18f9d421be023b6bcb6afe80d9e8bc558b7d8961a6
 	sha256sums = 3a0fed134c263a7a0573f36c1f4e49d27bea2cca0c098e069e79e1411d3c302e
 	sha256sums = 62a9f20b630738e6ade20a37551baa91b20760bfb718807d8a2be4caa3421a36
 

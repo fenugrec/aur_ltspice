@@ -1,5 +1,7 @@
 #!/bin/sh
 
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/ltspice"
+
 if [ ! -d $CONFIG_DIR ]; then
    mkdir -p $CONFIG_DIR
 fi
