@@ -3,20 +3,28 @@
 
 pkgname=ltspice
 pkgver=24.0.11.20240418.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility."
 arch=('x86_64')
 url="http://www.linear.com/designtools/software/"
 license=('LicenseRef-LTspice')
 depends=('wine')
 optdepends=('xdg-utils: for launching HTML help files')
-makedepends=('curl' 'icoutils' 'imagemagick' 'gendesk' 'msitools')
+makedepends=('gawk'
+	'curl'
+	'icoutils'
+	'imagemagick'
+	'gendesk'
+	'msitools'
+)
 
 source=("${pkgname}.sh"
         "${pkgname}-help.sh"
+	"conv.sh"
         "https://ltspice.analog.com/software/LTspice64.msi")
 sha256sums=('456c0e6550f8d7ee354aca18f9d421be023b6bcb6afe80d9e8bc558b7d8961a6'
             '3a0fed134c263a7a0573f36c1f4e49d27bea2cca0c098e069e79e1411d3c302e'
+            '2dd9f26ac982f0c2fd5d5cdeff921a87f2cf33264152bcfc3ac6f0ea2c5e5f9d'
             '62a9f20b630738e6ade20a37551baa91b20760bfb718807d8a2be4caa3421a36')
 
 OPTIONS=(!strip)
@@ -37,6 +45,10 @@ build() {
     rm ${pkgname}.ico
 
     gendesk --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" -n --name="LTSpice" --exec="/usr/bin/ltspice" -f
+
+    #tweak mixed-case hyperlinks in help docs
+    cd LTspiceHelp
+    sh ../conv.sh
 }
 
 package()
